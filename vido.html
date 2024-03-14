@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .video-container:hover video {
+            transform: scale(1.1);
+        }
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        .play-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .play-button i {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video controls>
+            <source src="your_video_url.mp4" type="video/mp4">
+            <!-- Add more <source> elements for different video formats -->
+            Your browser does not support the video tag.
+        </video>
+        <button class="play-button" onclick="togglePlayPause()">
+            <i class="fas fa-play"></i>
+        </button>
+    </div>
+
+    <script>
+        function togglePlayPause() {
+            var video = document.querySelector('video');
+            var button = document.querySelector('.play-button');
+            if (video.paused) {
+                video.play();
+                button.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                video.pause();
+                button.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+    </script>
+</body>
+</html>
